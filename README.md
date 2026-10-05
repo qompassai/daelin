@@ -13,7 +13,38 @@ that define how AI agents act in 2026 — **MCP** (Model Context Protocol) and *
 (Agent-to-Agent) — built around real, working implementations rather than abstract
 spec summaries.
 
-## What this is
+## ⏱ Start here: the interactive timeline
+
+> ### [Open the timeline →](https://qompassai.github.io/daelin/timeline.html)
+>
+> The full MCP → A2A chronology, 2024 to today, every entry linked to its primary
+> source. **Read it first, in order** — everything in this repo follows the same
+> chronology. Once you've walked the timeline, the chapters below will feel like
+> a deeper cut of a story you already know.
+
+<details>
+<summary><strong>📖 Contents — 9 chapters + glossary (click to expand)</strong></summary>
+
+| Chapter | File | What you'll learn |
+|---------|------|-------------------|
+| 1 | [docs/01-standards-timeline.md](docs/01-standards-timeline.md) | The full MCP/A2A chronology, 2024–2026, sourced |
+| 2 | [docs/02-mcp-client.md](docs/02-mcp-client.md) | How an MCP client works: transport, sessions, registry, tools |
+| 3 | [docs/03-mcp-server.md](docs/03-mcp-server.md) | How an MCP server works: the headless stdio side |
+| 4 | [docs/04-mcp-security.md](docs/04-mcp-security.md) | Vetting, least privilege, and the trust model |
+| 5 | [docs/05-a2a.md](docs/05-a2a.md) | Agent Cards, discovery, tasks, and multi-agent fan-out |
+| 6 | [docs/06-rose-phlow.md](docs/06-rose-phlow.md) | Case study: editor ↔ agent-runtime over MCP |
+| 7 | [docs/07-salesforce-mcp.md](docs/07-salesforce-mcp.md) | Case study: Salesforce hosted + DX MCP servers |
+| 8 | [docs/08-best-practices.md](docs/08-best-practices.md) | The 2026 consensus checklist, with sources |
+| 9 | [docs/09-skill-spec.md](docs/09-skill-spec.md) | The Agent Skills open specification: SKILL.md format, progressive disclosure |
+| — | [docs/glossary.md](docs/glossary.md) | Terms, defined once |
+
+**New to all of this?** Walk the [timeline](https://qompassai.github.io/daelin/timeline.html) first, then read chapters 1 → 2 → 5 → 8.
+**Here for the code?** Chapters 2–4 and 6–7 are the implementation deep dives.
+
+</details>
+
+<details>
+<summary><strong>What this is (click to expand)</strong></summary>
 
 Most protocol documentation describes what the spec *says*. Daelin shows what the
 spec *means* by walking through code that actually implements it:
@@ -34,26 +65,10 @@ spec *means* by walking through code that actually implements it:
 Each chapter opens with the plain-language idea, then goes into the mechanism.
 No prior protocol knowledge is assumed; curiosity is.
 
-## Contents
+</details>
 
-| Chapter | File | What you'll learn |
-|---------|------|-------------------|
-| 1 | [docs/01-standards-timeline.md](docs/01-standards-timeline.md) | The full MCP/A2A chronology, 2024–2026, sourced |
-| 2 | [docs/02-mcp-client.md](docs/02-mcp-client.md) | How an MCP client works: transport, sessions, registry, tools |
-| 3 | [docs/03-mcp-server.md](docs/03-mcp-server.md) | How an MCP server works: the headless stdio side |
-| 4 | [docs/04-mcp-security.md](docs/04-mcp-security.md) | Vetting, least privilege, and the trust model |
-| 5 | [docs/05-a2a.md](docs/05-a2a.md) | Agent Cards, discovery, tasks, and multi-agent fan-out |
-| 6 | [docs/06-rose-phlow.md](docs/06-rose-phlow.md) | Case study: editor ↔ agent-runtime over MCP |
-| 7 | [docs/07-salesforce-mcp.md](docs/07-salesforce-mcp.md) | Case study: Salesforce hosted + DX MCP servers |
-| 8 | [docs/08-best-practices.md](docs/08-best-practices.md) | The 2026 consensus checklist, with sources |
-| 9 | [docs/09-skill-spec.md](docs/09-skill-spec.md) | The Agent Skills open specification: SKILL.md format, progressive disclosure |
-| — | [docs/glossary.md](docs/glossary.md) | Terms, defined once |
-| — | [timeline.html](https://qompassai.github.io/daelin/timeline.html) | Interactive timeline, MCP → A2A (open in a browser) |
-
-**New to all of this?** Read chapters 1 → 2 → 5 → 8, then open the [live timeline](https://qompassai.github.io/daelin/timeline.html).
-**Here for the code?** Chapters 2–4 and 6–7 are the implementation deep dives.
-
-## Working configurations
+<details>
+<summary><strong>⚙ Working configurations (click to expand)</strong></summary>
 
 This repo ships the real thing, not just the explanation:
 
@@ -67,7 +82,10 @@ This repo ships the real thing, not just the explanation:
   format, progressive disclosure, and why skills compose with MCP rather than
   competing with it.
 
-## The one-paragraph version
+</details>
+
+<details>
+<summary><strong>The one-paragraph version (click to expand)</strong></summary>
 
 MCP and A2A are complementary layers, not competitors. **MCP is the vertical
 connection**: one agent reaching down through MCP clients into MCP servers to
@@ -78,13 +96,18 @@ results. A real system uses both: tools over MCP, delegation over A2A. Since
 2026 both protocols share a governance home in the Linux Foundation's Agentic
 AI Foundation, but their specs remain separate.
 
-## Sources and honesty
+</details>
+
+<details>
+<summary><strong>Sources and honesty (click to expand)</strong></summary>
 
 The standards timeline (chapter 1) was researched from live primary sources on
 2026-09-30 — spec changelogs, official announcements, foundation press
 releases. Every entry carries its source; claims that couldn't be verified or
 where sources disagreed are labeled as such rather than smoothed over. If you
 spot something stale, that's a bug — the protocols move fast.
+
+</details>
 
 ## License
 
