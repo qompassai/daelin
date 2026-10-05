@@ -3,6 +3,10 @@
 <!-- Copyright (C) 2026 Qompass AI, All rights reserved -->
 <!-- ----------------------------------------------------->
 
+<p align="center">
+  <img src="./assets/hero.png" alt="Daelin — abstract agent network in electric blue" width="100%">
+</p>
+
 <h1 align="center">Qompass AI 대리인</h1>
 
 <h2 align="center">Daelin — learning the agent protocols by studying real implementations</h2>
