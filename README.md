@@ -4,7 +4,7 @@
 <!-- ----------------------------------------------------->
 
 <p align="center">
-  <img src="./assets/hero.png" alt="Daelin — abstract agent network in electric blue" width="100%">
+  <img src="./assets/hero-agentic.png" alt="Daelin — abstract agent network in electric blue" width="100%">
 </p>
 
 <h1 align="center">Qompass AI 대리인</h1>
