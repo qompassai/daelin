@@ -40,9 +40,10 @@ a deeper cut of a story you already know.*
 | 7 | [docs/07-salesforce-mcp.md](docs/07-salesforce-mcp.md) | Case study: Salesforce hosted + DX MCP servers |
 | 8 | [docs/08-best-practices.md](docs/08-best-practices.md) | The 2026 consensus checklist, with sources |
 | 9 | [docs/09-skill-spec.md](docs/09-skill-spec.md) | The Agent Skills open specification: SKILL.md format, progressive disclosure |
+| 10 | [docs/10-muse-and-context-models.md](docs/10-muse-and-context-models.md) | Muse, the personal agent, and Context Language Models (arXiv:2609.37725) |
 | — | [docs/glossary.md](docs/glossary.md) | Terms, defined once |
 
-**New to all of this?** Walk the [timeline](https://qompassai.github.io/daelin/timeline.html) first, then read chapters 1 → 2 → 5 → 8.
+**New to all of this?** Walk the [timeline](https://qompassai.github.io/daelin/timeline.html) first, then read chapters 1 → 2 → 5 → 8 → 10.
 **Here for the code?** Chapters 2–4 and 6–7 are the implementation deep dives.
 
 </details>
