@@ -15,15 +15,19 @@ spec summaries.
 
 ## ⏱ Start here: the interactive timeline
 
-> ### [Open the timeline →](https://qompassai.github.io/daelin/timeline.html)
->
-> The full MCP → A2A chronology, 2024 to today, every entry linked to its primary
-> source. **Read it first, in order** — everything in this repo follows the same
-> chronology. Once you've walked the timeline, the chapters below will feel like
-> a deeper cut of a story you already know.
+<div align="center">
+
+### [Open the timeline →](https://qompassai.github.io/daelin/timeline.html)
+
+*The full MCP → A2A chronology, 2024 to today — every entry linked to its primary
+source. **Read it first, in order** — everything in this repo follows the same
+chronology. Once you've walked the timeline, the chapters below will feel like
+a deeper cut of a story you already know.*
+
+</div>
 
 <details>
-<summary><strong>📖 Contents — 9 chapters + glossary (click to expand)</strong></summary>
+<summary><p align="center"><strong>📖 Contents — 9 chapters + glossary (click to expand)</strong></p></summary>
 
 | Chapter | File | What you'll learn |
 |---------|------|-------------------|
@@ -44,7 +48,7 @@ spec summaries.
 </details>
 
 <details>
-<summary><strong>What this is (click to expand)</strong></summary>
+<summary><p align="center"><strong>What this is (click to expand)</strong></p></summary>
 
 Most protocol documentation describes what the spec *says*. Daelin shows what the
 spec *means* by walking through code that actually implements it:
@@ -68,7 +72,7 @@ No prior protocol knowledge is assumed; curiosity is.
 </details>
 
 <details>
-<summary><strong>⚙ Working configurations (click to expand)</strong></summary>
+<summary><p align="center"><strong>⚙ Working configurations (click to expand)</strong></p></summary>
 
 This repo ships the real thing, not just the explanation:
 
@@ -85,7 +89,7 @@ This repo ships the real thing, not just the explanation:
 </details>
 
 <details>
-<summary><strong>The one-paragraph version (click to expand)</strong></summary>
+<summary><p align="center"><strong>The one-paragraph version (click to expand)</strong></p></summary>
 
 MCP and A2A are complementary layers, not competitors. **MCP is the vertical
 connection**: one agent reaching down through MCP clients into MCP servers to
@@ -99,7 +103,7 @@ AI Foundation, but their specs remain separate.
 </details>
 
 <details>
-<summary><strong>Sources and honesty (click to expand)</strong></summary>
+<summary><p align="center"><strong>Sources and honesty (click to expand)</strong></p></summary>
 
 The standards timeline (chapter 1) was researched from live primary sources on
 2026-09-30 — spec changelogs, official announcements, foundation press
