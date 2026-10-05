@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daelin — From MCP to Agent2Agent: The Timeline</title>
+<style>
+  :root {
+    --bg: #0f1420; --panel: #171e2e; --line: #2a3550;
+    --text: #e8ecf4; --muted: #9aa5bd;
+    --mcp: #6aa8ff; --a2a: #7ee2a8; --adj: #c9a86a; --gov: #b48ce8;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font-family: -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+         line-height: 1.55; }
+  header { padding: 2.5rem 1.25rem 1.5rem; text-align: center;
+           border-bottom: 1px solid var(--line); }
+  header h1 { margin: 0 0 .4rem; font-size: 1.9rem; }
+  header h1 .kr { color: var(--a2a); }
+  header p { color: var(--muted); max-width: 44rem; margin: .6rem auto; }
+  .filters { display: flex; gap: .5rem; justify-content: center; flex-wrap: wrap;
+             padding: 1.25rem 1rem .25rem; }
+  .filters button { background: var(--panel); color: var(--text);
+    border: 1px solid var(--line); border-radius: 999px; padding: .45rem 1.1rem;
+    cursor: pointer; font-size: .9rem; }
+  .filters button[aria-pressed="true"] { border-color: var(--text); font-weight: 600; }
+  .filters button[data-f="mcp"][aria-pressed="true"] { border-color: var(--mcp); color: var(--mcp); }
+  .filters button[data-f="a2a"][aria-pressed="true"] { border-color: var(--a2a); color: var(--a2a); }
+  .filters button[data-f="adj"][aria-pressed="true"] { border-color: var(--adj); color: var(--adj); }
+  .filters button[data-f="gov"][aria-pressed="true"] { border-color: var(--gov); color: var(--gov); }
+  main { max-width: 52rem; margin: 0 auto; padding: 1rem 1.25rem 4rem; }
+  .year { margin: 2.2rem 0 .8rem; font-size: 1.35rem; color: var(--muted);
+          border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+  .event { position: relative; background: var(--panel); border: 1px solid var(--line);
+           border-left: 4px solid var(--muted); border-radius: .5rem;
+           padding: .9rem 1.1rem; margin: 0 0 .8rem; }
+  .event.mcp { border-left-color: var(--mcp); }
+  .event.a2a { border-left-color: var(--a2a); }
+  .event.adj { border-left-color: var(--adj); }
+  .event.gov { border-left-color: var(--gov); }
+  .event.hidden { display: none; }
+  .event .date { font-size: .82rem; color: var(--muted); letter-spacing: .02em; }
+  .event .tag { display: inline-block; font-size: .72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; border-radius: .3rem;
+    padding: .1rem .5rem; margin-left: .6rem; vertical-align: middle; }
+  .tag.mcp { background: rgba(106,168,255,.15); color: var(--mcp); }
+  .tag.a2a { background: rgba(126,226,168,.15); color: var(--a2a); }
+  .tag.adj { background: rgba(201,168,106,.15); color: var(--adj); }
+  .tag.gov { background: rgba(180,140,232,.15); color: var(--gov); }
+  .event h3 { margin: .35rem 0 .4rem; font-size: 1.02rem; }
+  .event p { margin: .35rem 0; color: #cdd5e6; font-size: .94rem; }
+  .event .flag { font-size: .78rem; color: var(--adj); }
+  .event a.src { font-size: .82rem; color: var(--mcp); text-decoration: none; }
+  .event a.src:hover { text-decoration: underline; }
+  .note { background: var(--panel); border: 1px dashed var(--line); border-radius: .5rem;
+          padding: 1rem 1.2rem; margin: 2rem 0; color: var(--muted); font-size: .9rem; }
+  footer { text-align: center; color: var(--muted); font-size: .82rem;
+           padding: 2rem 1rem; border-top: 1px solid var(--line); }
+</style>
+</head>
+<body>
+<header>
+  <h1><span class="kr">대리인</span> Daelin — From MCP to Agent2Agent</h1>
+  <p>The chronological story of the two protocols that define how AI agents act:
+  <strong style="color:var(--mcp)">MCP</strong> (vertical — agent to tools) and
+  <strong style="color:var(--a2a)">A2A</strong> (horizontal — agent to agent),
+  from Anthropic's 2024 announcement to shared governance in 2026.
+  Researched from primary sources, 2026-09-30.</p>
+</header>
+
+<div class="filters" role="group" aria-label="Filter timeline">
+  <button data-f="all" aria-pressed="true">All</button>
+  <button data-f="mcp" aria-pressed="false">MCP</button>
+  <button data-f="a2a" aria-pressed="false">A2A</button>
+  <button data-f="gov" aria-pressed="false">Governance</button>
+  <button data-f="adj" aria-pressed="false">Adjacent</button>
+</div>
+
+<main id="timeline"></main>
+
+<div class="note" style="max-width:52rem;margin:0 auto 2rem;padding:1rem 1.2rem;">
+  <strong>Reading this timeline:</strong> entries marked <em>[secondary]</em> come from
+  corroborating coverage rather than a loaded primary page; <em>[disputed]</em> marks dates
+  where sources disagreed. The companion repository
+  <a href="https://github.com/qompassai/daelin" style="color:var(--mcp)">qompassai/daelin</a>
+  walks through working implementations of both protocols.
+</div>
+
+<footer>Qompass AI Daelin — educational project · sources verified live 2026-09-30</footer>
+
+<script>
+const EVENTS = [
+ {y:"2024", d:"2024-11-05", c:"mcp", t:"MCP spec first published (v2024-11-05)",
+  b:"JSON-RPC 2.0 protocol with hosts, clients, and servers. Server features: tools, resources, prompts. Client features: roots, sampling. Transports: stdio and HTTP+SSE.",
+  s:"https://modelcontextprotocol.io/specification/2025-03-26/changelog"},
+ {y:"2024", d:"2024-11-25", c:"mcp", t:"Anthropic open-sources MCP", f:"[secondary] date per corroborating sources",
+  b:"The spec plus Python/TypeScript SDKs, local server support in Claude Desktop, and an open-source server repo (Google Drive, Slack, GitHub, Git, Postgres, Puppeteer). Created by David Soria Parra and Justin Spahr-Summers. Early adopters: Block, Apollo.",
+  s:"https://www.anthropic.com/news/model-context-protocol"},
+ {y:"2024", d:"2024-12-19", c:"adj", t:"Anthropic publishes “Building effective agents”",
+  b:"The workflows-vs-agents taxonomy (prompt chaining, routing, parallelization, orchestrator-workers, evaluator-optimizer, autonomous agents). Core advice: simplest solution first, sandboxed testing, human feedback at checkpoints.",
+  s:"https://www.anthropic.com/engineering/building-effective-agents"},
+ {y:"2025", d:"2025-01", c:"adj", t:"OpenAI publishes “A Practical Guide to Building Agents”", f:"[secondary] PDF undated; Jan 2025 per coverage",
+  b:"Agent = model + tools + instructions. Single- vs multi-agent orchestration, tool design, guardrails, and the line everyone quotes: set up evals to establish a performance baseline.",
+  s:"https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf"},
+ {y:"2025", d:"2025-03-26", c:"mcp", t:"MCP spec 2025-03-26",
+  b:"OAuth 2.1 authorization framework. HTTP+SSE replaced by the new Streamable HTTP transport. JSON-RPC batching (removed again in June). Tool annotations — read-only vs destructive hints.",
+  s:"https://modelcontextprotocol.io/specification/2025-03-26/changelog"},
+ {y:"2025", d:"2025-04-09", c:"a2a", t:"Google announces Agent2Agent (A2A)",
+  b:"Open protocol for agents from different vendors to collaborate. 50+ launch partners. Explicitly “complements Anthropic's Model Context Protocol.” Core concepts: Agent Card discovery, task lifecycle, messages, UX negotiation via parts.",
+  s:"https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/"},
+ {y:"2025", d:"2025-05-27", c:"a2a", t:"A2A spec v0.2.1",
+  b:"Authenticated extended cards, referenceTaskIds. The v0.2 line announced around Google I/O.",
+  s:"https://github.com/a2aproject/a2a/blob/HEAD/CHANGELOG.md"},
+ {y:"2025", d:"2025-06-18", c:"mcp", t:"MCP spec 2025-06-18",
+  b:"Batching removed. Structured tool output. Servers classified as OAuth Resource Servers; clients MUST implement Resource Indicators (RFC 8707) so malicious servers can't steal tokens. New Security Best Practices page. Elicitation. MCP-Protocol-Version header.",
+  s:"https://modelcontextprotocol.io/specification/2025-06-18/changelog"},
+ {y:"2025", d:"2025-06-23", c:"gov", t:"Google donates A2A to the Linux Foundation",
+  b:"The Agent2Agent project forms with AWS, Cisco, Google, Microsoft, Salesforce, SAP, ServiceNow. Google transfers the spec, SDKs, and tooling. 100+ companies supporting.",
+  s:"https://developers.googleblog.com/en/google-cloud-donates-a2a-to-linux-foundation/"},
+ {y:"2025", d:"2025-07-30", c:"a2a", t:"A2A spec v0.3.0 (breaking)",
+  b:"Agent Card well-known URI changes from agent.json to agent-card.json. Signed cards. mTLS added to security schemes.",
+  s:"https://github.com/a2aproject/a2a/blob/HEAD/CHANGELOG.md"},
+ {y:"2025", d:"~2025-08-25", c:"adj", t:"IBM's ACP merges into A2A", f:"[secondary]",
+  b:"IBM/BeeAI's Agent Communication Protocol winds down; the repo is archived and IBM Research joins the A2A Technical Steering Committee. A2A consolidates as the de-facto agent-to-agent standard.",
+  s:"https://github.com/a2aproject/a2a"},
+ {y:"2025", d:"2025-09-08", c:"mcp", t:"MCP Registry launches (preview)",
+  b:"An open catalog and API for discovering publicly available MCP servers at registry.modelcontextprotocol.io — official MCP project, open source.",
+  s:"https://blog.modelcontextprotocol.io/posts/2025-09-08-mcp-registry-preview/"},
+ {y:"2025", d:"2025-09-16", c:"adj", t:"Google announces Agent Payments Protocol (AP2)", f:"[disputed] some sources say 09-17 or 09-29",
+  b:"Open standard for agents to transact via cryptographically signed mandates. 60+ launch partners. Built on A2A + MCP — the commerce layer above the messaging protocols.",
+  s:"https://www.linuxfoundation.org/press/a2a-protocol-surpasses-150-organizations-lands-in-major-cloud-platforms-and-sees-enterprise-production-use-in-first-year"},
+ {y:"2025", d:"2025-11-25", c:"mcp", t:"MCP spec 2025-11-25 (“One Year of MCP”)",
+  b:"OIDC discovery for authorization servers. Tool/resource icons. Incremental scope consent. OAuth Client ID Metadata Documents. Experimental Tasks — durable async requests.",
+  s:"https://modelcontextprotocol.io/specification/2025-11-25/changelog"},
+ {y:"2025", d:"2025-12-09", c:"gov", t:"Anthropic donates MCP to the Agentic AI Foundation", f:"[secondary] date per MCP blog",
+  b:"AAIF, a Linux Foundation directed fund co-founded by Anthropic, Block, and OpenAI. MCP joins Block's goose and OpenAI's AGENTS.md as founding projects. Claimed: 10,000+ public servers, 97M+/month SDK downloads.",
+  s:"https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation"},
+ {y:"2026", d:"2026-03-12", c:"a2a", t:"A2A v1.0.0 — first stable spec",
+  b:"Breaking vs 0.x. Protocol separated from transport bindings (JSON-RPC, REST, gRPC). Modernized OAuth 2.0. Native multi-tenancy. Signed Agent Cards. tasks/list with filtering and pagination.",
+  s:"https://github.com/a2aproject/a2a/blob/HEAD/CHANGELOG.md"},
+ {y:"2026", d:"2026-04-09", c:"gov", t:"Linux Foundation: A2A one-year press release",
+  b:"150+ organizations, 22,000+ GitHub stars, SDKs in five languages, native integration in Azure AI Foundry, Copilot Studio, Amazon Bedrock AgentCore. Restates the complementarity: A2A for agent-to-agent across boundaries, MCP for agent-to-tools-and-data.",
+  s:"https://www.linuxfoundation.org/press/a2a-protocol-surpasses-150-organizations-lands-in-major-cloud-platforms-and-sees-enterprise-production-use-in-first-year"},
+ {y:"2026", d:"2026-05-26", c:"a2a", t:"A2A v1.0.1 (patch)",
+  b:"Prefer application/a2a+json in the HTTP binding; error-mapping and TaskStatus fixes. Latest 1.x as of research date.",
+  s:"https://github.com/a2aproject/a2a/blob/HEAD/CHANGELOG.md"},
+ {y:"2026", d:"2026-07-28", c:"mcp", t:"MCP spec 2026-07-28 — “largest revision since launch”",
+  b:"Stateless core: sessions and the initialize handshake removed; every request carries version + capabilities in _meta. New server/discover RPC. ping, logging/setLevel removed. Tasks moved to an official extension. MRTR replaces sampling + elicitation. SSE resumability removed.",
+  s:"https://modelcontextprotocol.io/specification/2026-07-28/changelog"},
+ {y:"2026", d:"2026-08-17", c:"gov", t:"A2A joins the Agentic AI Foundation",
+  b:"A2A accepted as a Growth Stage project at AAIF. Both protocols now share a governance home — specs remain separate, no merger.",
+  s:"https://a2a-protocol.org/latest/blog/2026/08/27/a-new-chapter-for-a2a-joining-the-agentic-ai-foundation/"}
+];
+
+const NAMES = { mcp: "MCP", a2a: "A2A", gov: "Governance", adj: "Adjacent" };
+const main = document.getElementById("timeline");
+let lastYear = null;
+for (const e of EVENTS) {
+  if (e.y !== lastYear) {
+    const h = document.createElement("div");
+    h.className = "year"; h.textContent = e.y;
+    h.dataset.year = e.y;
+    main.appendChild(h);
+    lastYear = e.y;
+  }
+  const d = document.createElement("div");
+  d.className = "event " + e.c;
+  d.dataset.cat = e.c;
+  d.innerHTML =
+    '<span class="date">' + e.d + '</span>' +
+    '<span class="tag ' + e.c + '">' + NAMES[e.c] + '</span>' +
+    '<h3>' + e.t + '</h3>' +
+    (e.f ? '<div class="flag">' + e.f + '</div>' : '') +
+    '<p>' + e.b + '</p>' +
+    '<a class="src" href="' + e.s + '" target="_blank" rel="noopener">primary source ↗</a>';
+  main.appendChild(d);
+}
+
+document.querySelectorAll(".filters button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".filters button").forEach(b => b.setAttribute("aria-pressed", "false"));
+    btn.setAttribute("aria-pressed", "true");
+    const f = btn.dataset.f;
+    document.querySelectorAll(".event").forEach(ev => {
+      ev.classList.toggle("hidden", f !== "all" && ev.dataset.cat !== f);
+    });
+    document.querySelectorAll(".year").forEach(yh => {
+      let next = yh.nextElementSibling, any = false;
+      while (next && next.classList.contains("event")) {
+        if (!next.classList.contains("hidden")) { any = true; break; }
+        next = next.nextElementSibling;
+      }
+      yh.style.display = any ? "" : "none";
+    });
+  });
+});
+</script>
+</body>
+</html>
