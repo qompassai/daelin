@@ -47,9 +47,9 @@ No prior protocol knowledge is assumed; curiosity is.
 | 7 | [docs/07-salesforce-mcp.md](docs/07-salesforce-mcp.md) | Case study: Salesforce hosted + DX MCP servers |
 | 8 | [docs/08-best-practices.md](docs/08-best-practices.md) | The 2026 consensus checklist, with sources |
 | — | [docs/glossary.md](docs/glossary.md) | Terms, defined once |
-| — | [timeline.html](timeline.html) | Interactive timeline, MCP → A2A (open in a browser) |
+| — | [timeline.html](https://qompassai.github.io/daelin/timeline.html) | Interactive timeline, MCP → A2A (open in a browser) |
 
-**New to all of this?** Read chapters 1 → 2 → 5 → 8, then open `timeline.html`.
+**New to all of this?** Read chapters 1 → 2 → 5 → 8, then open the [live timeline](https://qompassai.github.io/daelin/timeline.html).
 **Here for the code?** Chapters 2–4 and 6–7 are the implementation deep dives.
 
 ## The one-paragraph version
