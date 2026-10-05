@@ -46,11 +46,26 @@ No prior protocol knowledge is assumed; curiosity is.
 | 6 | [docs/06-rose-phlow.md](docs/06-rose-phlow.md) | Case study: editor ↔ agent-runtime over MCP |
 | 7 | [docs/07-salesforce-mcp.md](docs/07-salesforce-mcp.md) | Case study: Salesforce hosted + DX MCP servers |
 | 8 | [docs/08-best-practices.md](docs/08-best-practices.md) | The 2026 consensus checklist, with sources |
+| 9 | [docs/09-skill-spec.md](docs/09-skill-spec.md) | The Agent Skills open specification: SKILL.md format, progressive disclosure |
 | — | [docs/glossary.md](docs/glossary.md) | Terms, defined once |
 | — | [timeline.html](https://qompassai.github.io/daelin/timeline.html) | Interactive timeline, MCP → A2A (open in a browser) |
 
 **New to all of this?** Read chapters 1 → 2 → 5 → 8, then open the [live timeline](https://qompassai.github.io/daelin/timeline.html).
 **Here for the code?** Chapters 2–4 and 6–7 are the implementation deep dives.
+
+## Working configurations
+
+This repo ships the real thing, not just the explanation:
+
+- **[`agents/`](agents/)** — agent runtime configurations (Claude Code, Codex,
+  OpenCode, OpenShell): settings, permissions, and project instructions as
+  actually used.
+- **[`skills/`](skills/)** — the working skill library: thirteen Tiger Style
+  language skills plus `mcp-builder`, `skill-creator`, and more, each following
+  the [Agent Skills open specification](https://agentskills.io/specification).
+  See [chapter 9](docs/09-skill-spec.md) for the spec itself — the SKILL.md
+  format, progressive disclosure, and why skills compose with MCP rather than
+  competing with it.
 
 ## The one-paragraph version
 
