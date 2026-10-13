@@ -1,3 +1,4 @@
+<a href="./LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License: Apache 2.0"></a>
 <!--------------- /qompassai/daelin/README.md -------------->
 <!-------------------- Qompass AI Daelin -------------------->
 <!-- Copyright (C) 2026 Qompass AI, All rights reserved -->
@@ -120,11 +121,5 @@ spot something stale, that's a bug — the protocols move fast.
 
 ## License
 
-See [LICENSE](./LICENSE) (repository template license files retained from the
-project scaffold).
+This project is licensed under the [Apache License, Version 2.0](./LICENSE).
 
----
-
-*Daelin is a Qompass AI educational project. The implementations described here
-live in the [Diver](https://github.com/qompassai/diver) Neovim configuration
-and the [phlow](https://github.com/qompassai/phlow) agent runtime.*
