@@ -1,6 +1,6 @@
 # Salesforce skills (sf/)
 
-Skills for Matt's Salesforce work — Trailhead module progress, org
+Skills for Owner's Salesforce work — Trailhead module progress, org
 hands-on via the `sf` CLI, and the Agentforce toolchain. They build on
 two root-level skills that predate this subdir and stay where they are:
 
@@ -15,5 +15,5 @@ two root-level skills that predate this subdir and stay where they are:
 | `agentscript-dev` | AgentScript (.agent) authoring, preview, and testing with the Agentforce DX tooling. |
 
 Standing boundaries encoded in these skills: graded Trailhead actions
-(quiz submissions, Check Challenge, superbadges) are Matt's clicks;
+(quiz submissions, Check Challenge, superbadges) are Owner's clicks;
 map-dev (TDS production) is sealed — playgrounds and dev orgs only.
